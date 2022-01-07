@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "effective_python"
+version = "0.1.0"
+description = ""
+authors = ["15bubbles <15bubbles.15bubbles@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^21.12b0"
+mypy = "^0.930"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
