@@ -1,6 +1,6 @@
 import json
+from dataclasses import asdict, dataclass
 from typing import Any, Type
-from dataclasses import dataclass, asdict
 
 
 # we could use TypedDict here but dataclasses give us some easy way
@@ -40,7 +40,10 @@ class _SerializableBase:
         return f"{self.__class__.__name__}({args})"
 
     def serialize(self) -> str:
-        data = SerializedObject(cls=self.__class__.__name__, args=self.args)
+        data = SerializedObject(
+            cls=self.__class__.__name__,
+            args=self.args,
+        )
         return json.dumps(asdict(data))
 
 

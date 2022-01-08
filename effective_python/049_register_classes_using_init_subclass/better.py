@@ -1,6 +1,6 @@
 import json
-from typing import Any, Type
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
+from typing import Any
 
 
 # we could use TypedDict here but dataclasses give us some easy way
@@ -47,10 +47,11 @@ class Serializable:
         _register_class(cls)
 
     def serialize(self) -> str:
-        serialized_object = SerializedObject(
-            cls=self.__class__.__name__, args=self.args
+        data = SerializedObject(
+            cls=self.__class__.__name__,
+            args=self.args,
         )
-        return json.dumps(serialized_object)
+        return json.dumps(asdict(data))
 
 
 class Point2D(Serializable):
